@@ -1,4 +1,3 @@
-from pydoc import describe
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -7,11 +6,11 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Task(models.Model):
     title = models.CharField(max_length=30)
-    description = models.CharField(default="", blank=True, max_length=1000)
-    done = models.BooleanField(default=False)
-    priority = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(3)])
+    description = models.CharField(max_length=1000)
+    # done = models.BooleanField(default=False)
+    # priority = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(3)])
 
     def __str__(self):
-        return f"{self.title} (Priority: {self.priority}) (Done: {self.done})"
+        return self.title
 
 
